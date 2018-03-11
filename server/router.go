@@ -8,7 +8,7 @@ import (
 func NewRouter() *mux.Router {
 	router := mux.NewRouter()
 
-	router.Handle("/", (http.FileServer(http.Dir("./assets/"))))
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./frontend/dist")))
 
 	router.HandleFunc("/ping", pingHandler).Methods("GET")
 	return router
